@@ -1,2 +1,2 @@
-# MealsToGo
+MealsToGo
 React Native App
