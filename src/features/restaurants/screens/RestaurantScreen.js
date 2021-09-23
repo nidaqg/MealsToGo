@@ -1,38 +1,40 @@
 import React from 'react';
+import styled from 'styled-components/native';
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, SafeAreaView, StatusBar } from "react-native";
+import { View, SafeAreaView, StatusBar } from "react-native";
 import { Searchbar } from 'react-native-paper';
 import { RestaurantInfo } from '../components/RestaurantInfo';
+
+
+const SafeArea = styled(SafeAreaView)`
+flex: 1;
+ ${StatusBar.currentHeight && `marginTop: ${StatusBar.currentHeight}px`};
+`;
+
+const SearchContainer = styled(View)`
+padding: 16px;
+`;
+
+const ListContainer = styled(View)`
+padding: 16px;
+      flex: 1;
+      backgroundColor: lightgrey;
+`;
 
 export const RestaurantScreen = () => {
     return (
     <>
-      <SafeAreaView style={styles.mainContainer}>
-        <View style={styles.search}>
+      <SafeArea>
+        <SearchContainer>
         <Searchbar
       placeholder="Search"
     />
-        </View>
-        <View style={styles.listView}>
+        </SearchContainer>
+        <ListContainer>
           <RestaurantInfo />
-        </View>
-      </SafeAreaView>
+        </ListContainer>
+      </SafeArea>
       <ExpoStatusBar style="auto" />
     </>
     )
 }
-
-const styles = StyleSheet.create({
-    mainContainer: {
-      flex: 1,
-      marginTop: StatusBar.currentHeight,
-    },
-    search: {
-      padding: 16
-    },
-    listView: {
-      padding: 16,
-      flex: 1,
-      backgroundColor: "lightgrey",
-    },
-  });
