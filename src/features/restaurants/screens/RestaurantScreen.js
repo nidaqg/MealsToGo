@@ -12,13 +12,13 @@ flex: 1;
 `;
 
 const SearchContainer = styled(View)`
-padding: 16px;
+padding: ${props => props.theme.space[3]};
 `;
 
 const ListContainer = styled(View)`
-padding: 16px;
+padding: ${props => props.theme.space[3]};
       flex: 1;
-      backgroundColor: lightgrey;
+      backgroundColor:${props => props.theme.colors.bg.primary};
 `;
 
 export const RestaurantScreen = () => {

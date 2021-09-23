@@ -2,17 +2,19 @@ import React from "react";
 import styled from "styled-components/native";
 import { Button, Card, Paragraph } from "react-native-paper";
 
-//trying out styled component npm package
+//styled component npm package
 const Title = styled.Text`
-  fontSize: 24px;
+  fontSize: ${props => props.theme.sizes[2]};
+  padding: ${props => props.theme.space[1]};
+  color: ${props => props.theme.colors.ui.primary };
 `;
 const RestaurantCard = styled(Card)`
-  backgroundColor: white;
+  backgroundColor: ${props => props.theme.colors.bg.primary};
 `;
 
 const CardCover = styled(Card.Cover)`
-  padding: 10px;
-  backgroundColor: white;
+  padding: ${props => props.theme.space[3]};
+  backgroundColor: ${props => props.theme.colors.bg.primary};
 `;
 
 export const RestaurantInfo = ({ restaurant = {} }) => {
@@ -38,7 +40,6 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
         <CardCover source={photos} />
         <Card.Content>
           <Title>{name}</Title>
-          <Paragraph>{address}</Paragraph>
         </Card.Content>
       </RestaurantCard>
     </>
