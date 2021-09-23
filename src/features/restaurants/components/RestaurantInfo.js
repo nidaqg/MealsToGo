@@ -4,7 +4,8 @@ import { Button, Card, Paragraph } from "react-native-paper";
 
 //styled component npm package
 const Title = styled.Text`
-  fontSize: ${props => props.theme.sizes[2]};
+fontFamily: ${props=> props.theme.fonts.body}
+  fontSize: ${props => props.theme.sizes[1]};
   padding: ${props => props.theme.space[1]};
   color: ${props => props.theme.colors.ui.primary };
 `;
