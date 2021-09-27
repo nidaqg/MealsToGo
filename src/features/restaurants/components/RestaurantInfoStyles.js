@@ -27,6 +27,7 @@ justifyContent: flex-end;
 
 export const RestaurantCard = styled(Card)`
   backgroundColor: ${props => props.theme.colors.bg.primary};
+  marginBottom: ${props => props.theme.space[3]}
 `;
 export const CardCover = styled(Card.Cover)`
   padding: ${props => props.theme.space[3]};
