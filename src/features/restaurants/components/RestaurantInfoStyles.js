@@ -42,5 +42,4 @@ color: ${props => props.theme.colors.ui.primary};
 export const Icon = styled.Image`
 width: ${props => props.theme.sizes[1]};
 height: ${props => props.theme.sizes[1]};
-
-`
+`;
