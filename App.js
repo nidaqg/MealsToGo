@@ -18,7 +18,8 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 //import icons from expo for tab
 import {Ionicons} from "@expo/vector-icons";
-
+//import contextprovider
+import { RestaurantContextProvider } from "./src/services/restaurantservice/mock/RestaurantContext";
 
 const Tab = createBottomTabNavigator();
 
@@ -53,6 +54,7 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
+        <RestaurantContextProvider>
         <NavigationContainer>
           <Tab.Navigator
           screenOptions={({ route }) => ({
@@ -78,6 +80,7 @@ export default function App() {
             <Tab.Screen name="Map" component={Map} />
           </Tab.Navigator>
         </NavigationContainer>
+        </RestaurantContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
