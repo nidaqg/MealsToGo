@@ -3,6 +3,9 @@ import {locationRequest, locationTransform} from "./locationService";
 //create location context
 export const LocationContext = createContext();
 
+export const LocationContextProvider = ({children}) => {
+
+
 //create all the states needed
 const[keyword, setKeyword] = useState("san francisco");
 const [location, setLocation] = useState(null);
@@ -28,8 +31,6 @@ useEffect(()=> {
     onSearch(keyword)
 }, []);
 
-//context provider
-export const LocationContextProvider = ({children}) => {
     return (
         <LocationContext.Provider
         value={{

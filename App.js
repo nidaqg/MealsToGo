@@ -20,6 +20,7 @@ import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import {Ionicons} from "@expo/vector-icons";
 //import contextprovider
 import { RestaurantContextProvider } from "./src/services/restaurantservice/mock/RestaurantContext";
+import {LocationContextProvider} from "./src/services/location/locationContext";
 
 const Tab = createBottomTabNavigator();
 
@@ -54,6 +55,7 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
+        <LocationContextProvider>
         <RestaurantContextProvider>
         <NavigationContainer>
           <Tab.Navigator
@@ -81,6 +83,7 @@ export default function App() {
           </Tab.Navigator>
         </NavigationContainer>
         </RestaurantContextProvider>
+        </LocationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
