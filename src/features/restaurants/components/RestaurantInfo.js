@@ -19,7 +19,7 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
   //deconstruct the restaurant object
   //(will get this info from the google API)
   const {
-    name = "Some restaurant",
+    name = "Some Restaurant",
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos = [
       "https://images.everydayhealth.com/images/diet-nutrition/34da4c4e-82c3-47d7-953d-121945eada1e00-giveitup-unhealthyfood.jpg?sfvrsn=a31d8d32_0",
@@ -37,7 +37,7 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
   return (
     <>
       <RestaurantCard elevation={5}>
-        <CardCover source={photos} />
+        <CardCover key={name} source={{uri: photos[0]}} />
         <Info>
           <Title>{name}</Title>
           <Section>
