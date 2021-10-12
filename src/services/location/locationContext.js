@@ -1,11 +1,11 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import { locationRequest, locationTransform } from "./locationService";
 //create location context
 export const LocationContext = createContext();
 
 export const LocationContextProvider = ({ children }) => {
   //create all the states needed
-  const [keyword, setKeyword] = useState(null);
+  const [keyword, setKeyword] = useState("San Francisco");
   const [location, setLocation] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -14,23 +14,26 @@ export const LocationContextProvider = ({ children }) => {
   const onSearch = (searchKeyword) => {
     setIsLoading(true);
     setKeyword(searchKeyword);
-    if(!searchKeyword.length) {
+  };
+
+  //instead of puttin all this in the search function, use useEffect
+  //Everytime keyword changes, useEffect is called
+  useEffect(() => {
+    if (!keyword.length) {
       return;
     }
-    locationRequest(searchKeyword.toLowerCase())
+    locationRequest(keyword.toLowerCase())
       .then(locationTransform)
       .then((result) => {
         setIsLoading(false);
         setLocation(result);
-        console.log("LOCATION CONTEXT ",result)
+        console.log("LOCATION CONTEXT ", result);
       })
       .catch((err) => {
         setIsLoading(false);
         setError(err);
       });
-  };
-
-
+  }, [keyword]);
 
   return (
     <LocationContext.Provider
