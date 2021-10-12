@@ -24,7 +24,7 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
     photos = [
       "https://images.everydayhealth.com/images/diet-nutrition/34da4c4e-82c3-47d7-953d-121945eada1e00-giveitup-unhealthyfood.jpg?sfvrsn=a31d8d32_0",
     ],
-    address = "100 street",
+    vicinity = "100 street",
     isOpenNow = true,
     rating = 4,
     isClosedTemporarily = true,
@@ -62,7 +62,7 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
             </SectionEnd>
           </Section>
 
-          <Address>{address}</Address>
+          <Address>{vicinity}</Address>
         </Info>
       </RestaurantCard>
     </>
