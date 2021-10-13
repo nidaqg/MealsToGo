@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from "react";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/Infrastructure/Theme";
@@ -14,7 +15,9 @@ import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 //import contextprovider
 import { RestaurantContextProvider } from "./src/services/restaurantservice/mock/RestaurantContext";
 import {LocationContextProvider} from "./src/services/location/locationContext";
-import { AppNavigation } from "./src/Infrastructure/navigation/AppNavigation";
+
+//import Navigation
+import { Navigation } from "./src/Infrastructure/navigation/index";
 
 //import theme provider from styled components npm package and wrap everything in it
 //this will help us keep the theme consistent throughout the app
@@ -36,7 +39,7 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <LocationContextProvider>
         <RestaurantContextProvider>
-        <AppNavigation/>
+        <Navigation/>
         </RestaurantContextProvider>
         </LocationContextProvider>
       </ThemeProvider>
