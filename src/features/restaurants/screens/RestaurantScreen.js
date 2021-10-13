@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components/native";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import { View, SafeAreaView, StatusBar, FlatList } from "react-native";
+import { View, SafeAreaView, StatusBar, FlatList, TouchableOpacity } from "react-native";
 import { RestaurantInfo } from "../components/RestaurantInfo";
 import { RestaurantContext } from "../../../services/restaurantservice/mock/RestaurantContext";
 import { ActivityIndicator, Colors } from "react-native-paper";
@@ -13,7 +13,7 @@ const SafeArea = styled(SafeAreaView)`
 `;
 
 
-export const RestaurantScreen = () => {
+export const RestaurantScreen = ({navigation}) => {
   const restaurantsContext = useContext(RestaurantContext);
 
   return (
@@ -33,7 +33,12 @@ export const RestaurantScreen = () => {
         <FlatList
           data={restaurantsContext.restaurants}
           renderItem={({ item }) => {
-            return <RestaurantInfo restaurant={item} />;
+            return (
+              <TouchableOpacity
+              onPress={()=> {navigation.navigate("RestaurantDetail")}}>
+            <RestaurantInfo restaurant={item} />
+            </TouchableOpacity>
+            );
           }}
           keyExtractor={(item) => item.name}
           contentContainerStyle={{ padding: 16 }}
