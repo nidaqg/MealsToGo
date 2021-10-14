@@ -9,8 +9,6 @@ const SearchContainer = styled(View)`
 `;
 
 
-
-
 export const Search = () => {
   //import location context
   const { keyword, search} = useContext(LocationContext);

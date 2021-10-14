@@ -24,12 +24,13 @@ export const SearchMap = () => {
   useEffect(() => {
     setSearchKeyword(keyword);
   }, [keyword]);
-  
+
   return (
     <>
       <SearchContainer>
         <Searchbar
           placeholder="Search"
+          icon="map"
           value={searchKeyword}
           onChangeText={(text) => {
             setSearchKeyword(text);
