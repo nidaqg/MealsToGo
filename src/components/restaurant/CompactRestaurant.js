@@ -32,9 +32,9 @@ color: ${props => props.theme.colors.ui.primary};
 
 const isAndroid = Platform.OS==="android";
 
-export const CompactRestaurant = ({restaurant}) => {
+export const CompactRestaurant = ({restaurant, isMap}) => {
     
-    const Image = isAndroid ? CompactWebView: CompactImage;
+    const Image = isAndroid && isMap ? CompactWebView: CompactImage;
 
     return (
         <>

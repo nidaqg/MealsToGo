@@ -7,7 +7,7 @@ import { CompactRestaurant } from "../../../components/restaurant/CompactRestaur
 export const MapCallout = ({restaurant}) => {
     return (
         <>
-        <CompactRestaurant restaurant = {restaurant} />
+        <CompactRestaurant isMap restaurant = {restaurant} />
         </>
     )
 }

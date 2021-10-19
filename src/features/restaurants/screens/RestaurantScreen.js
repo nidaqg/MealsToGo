@@ -45,7 +45,10 @@ export const RestaurantScreen = ({ navigation }) => {
           onFavouritesToggle={() => setIsToggled(!isToggled)}
         />
         {isToggled && 
-        <FavouritesBar favourites={favourites}/>}
+        <FavouritesBar 
+        favourites={favourites}
+        onDetail={navigation.navigate}
+        />}
         <FlatList
           data={restaurantsContext.restaurants}
           renderItem={({ item }) => {
