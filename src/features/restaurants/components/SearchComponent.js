@@ -9,7 +9,7 @@ const SearchContainer = styled(View)`
 `;
 
 
-export const Search = () => {
+export const Search = ({isFavouritesToggled, onFavouritesToggle}) => {
   //import location context
   const { keyword, search} = useContext(LocationContext);
   //use state to track the search term, use a default for better aesthetic
@@ -26,6 +26,8 @@ export const Search = () => {
     <>
       <SearchContainer>
         <Searchbar
+        icon={isFavouritesToggled ? "heart" : "heart-outline"}
+        onIconPress={onFavouritesToggle}
           placeholder="Search"
           value={searchKeyword}
           onChangeText={(text) => {
