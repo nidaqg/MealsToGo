@@ -5,6 +5,7 @@ import { theme } from "./src/Infrastructure/Theme";
 
 //import firebase
 import * as firebase from "firebase";
+import "firebase/auth";
 
 //importing fonts from expo-google-fonts.
 //Each font has to be imported separately
@@ -42,15 +43,6 @@ if (!firebase.apps.length) {
 //import theme provider from styled components npm package and wrap everything in it
 //this will help us keep the theme consistent throughout the app
 export default function App() {
-  //set authentication state
-  const [isAuth, setIsAuth] = useState(false);
-
-  //authenticate on mounting component
-  // useEffect(() => {
-  //   setTimeout(() => {
-      
-  //   }, 2000);
-  // }, []);
 
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
