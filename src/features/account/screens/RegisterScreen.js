@@ -6,7 +6,7 @@ import { View, Text } from "react-native";
 import { AuthContext } from "../../../services/authentication/AuthenticationContext";
 
 
-export const RegisterScreen = () => {
+export const RegisterScreen = ({navigation}) => {
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 const [repeatedpassword, setRepeatedPassword] = useState("");
@@ -66,6 +66,18 @@ const {onRegister, error} = useContext(AuthContext)
             Register
           </Button>
         </View>
+
+        <View style={{marginTop:10}}>
+        <Button
+            style={{ padding: 10 }}
+            mode="contained"
+            color={colors.brand.primary}
+            icon="arrow-left"
+            onPress={() => navigation.goBack()}
+          >
+            Back
+          </Button>
+          </View>
 
 
       </LoginContainer>

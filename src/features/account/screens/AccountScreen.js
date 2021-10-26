@@ -1,6 +1,6 @@
 import React from "react";
-import { View } from "react-native";
-import { AccountContainer, Background } from "../components/Background";
+import { View, Text } from "react-native";
+import { AccountContainer, AccountCover, Background, MainContainer, Title} from "../components/Background";
 import { colors } from "../../../Infrastructure/Theme/colors";
 import { Button } from "react-native-paper";
 
@@ -10,7 +10,14 @@ export const AccountScreen = ({ navigation }) => {
       resizeMode="cover"
       source={require("../../../../assets/background.jpg")}
     >
+      <AccountCover/>
+      <MainContainer>  
+      <View style={{alignItems:'center'}}>
+      <Title>Meals To Go</Title>
+      </View>
+
       <AccountContainer>
+        
         <View style={{ marginBottom: 15 }}>
           <Button
             style={{ padding: 10 }}
@@ -35,6 +42,8 @@ export const AccountScreen = ({ navigation }) => {
           </Button>
         </View>
       </AccountContainer>
+      </MainContainer>
+
     </Background>
   );
 };
