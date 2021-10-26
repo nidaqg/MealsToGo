@@ -7,6 +7,7 @@ import { List } from "react-native-paper";
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
   ${StatusBar.currentHeight && `marginTop: ${StatusBar.currentHeight}px`};
+  background-color:${props=> props.theme.colors.bg.primary};
 `;
 
 export const RestaurantDetails = ({ route }) => {

@@ -22,9 +22,8 @@ const Settings = () => {
 
   return (
     <SafeArea style={{ flex: 1 }}>
-      <Text>Settings</Text>
       <Button
-      title="logout"
+      title="Log out"
       onPress={()=> onLogOut()}
       />
     </SafeArea>
