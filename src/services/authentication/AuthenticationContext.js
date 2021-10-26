@@ -21,6 +21,7 @@ useEffect(() => {
     } else {
         setIsLoading(false)
     }
+    checkUser()
 })
 },[]);
 

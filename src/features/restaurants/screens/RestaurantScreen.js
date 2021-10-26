@@ -3,8 +3,6 @@ import styled from "styled-components/native";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import {
   View,
-  SafeAreaView,
-  StatusBar,
   FlatList,
   TouchableOpacity,
 } from "react-native";
@@ -14,11 +12,7 @@ import { RestaurantContext } from "../../../services/restaurantservice/mock/Rest
 import { FavouritesContext } from "../../../services/favourites/FavouritesContext";
 import { ActivityIndicator, Colors } from "react-native-paper";
 import { Search } from "../components/SearchComponent";
-
-const SafeArea = styled(SafeAreaView)`
-  flex: 1;
-  ${StatusBar.currentHeight && `marginTop: ${StatusBar.currentHeight}px`};
-`;
+import { SafeArea } from "../components/SafeArea";
 
 export const RestaurantScreen = ({ navigation }) => {
   //set up contexts
