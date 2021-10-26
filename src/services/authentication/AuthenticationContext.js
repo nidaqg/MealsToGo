@@ -5,20 +5,23 @@ export const AuthContext = createContext();
 
 export const AuthContextProvider = ({children}) => {
 //states for all the values
-const[user, setUser] = useState(null)
+const[user, setUser] = useState("")
 const[isLoading, setIsLoading] = useState(false)
-const[error, setError] = useState()
+const[error, setError] = useState("")
 const[isAuthenticated, setIsAuthenticated] = useState(false)
 
-
+//login function with auth
 const onLogin = async (email,password) => {
 try{
     if(email !== "" || password !=="") {
        setIsLoading(true)
+       setError("")
+       
        const currentUser = await firebase.auth().signInWithEmailAndPassword(email,password)
         .then((currentUser)=> {
-           setIsAuthenticated(true)
-            setUser(currentUser.user.email)
+        setIsAuthenticated(true)
+
+        setUser(currentUser.user.email)
             setIsLoading(false)
         })
         
@@ -35,14 +38,15 @@ catch(e) {
 }
 }
 
-//registration function
+//registration function with auth
 const onRegister = async (email, password, repeatedpassword) => {
 try{
     if(password === repeatedpassword) {
+        setError("")
     const currentUser = await firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((currentUser) => {
-        setIsAuthenticated(true)
         setUser(currentUser.user.email)
+        setIsAuthenticated(true)
         setIsLoading(false)
     })
 } else {
@@ -52,6 +56,7 @@ try{
 catch(e) {
     setIsLoading(false);
     console.log(e.message)
+    setError(e.message)
 }
 
 }

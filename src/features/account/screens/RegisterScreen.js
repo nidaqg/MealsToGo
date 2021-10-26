@@ -21,7 +21,7 @@ const {onRegister, error} = useContext(AuthContext)
       <LoginContainer>
       <View>
         <TextInput
-        style={{marginBottom:10}}
+        style={{marginBottom:10, width:300}}
           label="Email"
           textContentType="emailAddress"
           keyboardType="email-address"
@@ -31,7 +31,7 @@ const {onRegister, error} = useContext(AuthContext)
         />
         </View>
         <TextInput
-          style={{marginBottom:10}}
+          style={{marginBottom:10, width:300}}
           label="Password"
           textContentType="password"
           autoCapitalize="none"
@@ -40,6 +40,7 @@ const {onRegister, error} = useContext(AuthContext)
           onChangeText={(p) => setPassword(p)}
         />
         <TextInput
+        style={{width:300}}
           label=" Re-enter Password"
           textContentType="password"
           autoCapitalize="none"
@@ -49,14 +50,14 @@ const {onRegister, error} = useContext(AuthContext)
         />
         
         
-        {error && (
+        {error !=="" && (
         <View style={{marginTop:15}}>
-       <Text>ERROR</Text>
+       <Text>{error}</Text>
         </View>)}
 
         <View style={{ marginTop: 15 }}>
           <Button
-            style={{ paddingHorizontal: 50, paddingVertical:10 }}
+            style={{ padding:10 }}
             mode="contained"
             color={colors.brand.primary}
             icon="email"

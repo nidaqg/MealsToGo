@@ -12,12 +12,11 @@ export const AccountContainer = styled.View`
 position: absolute;
 padding: ${(props)=> props.theme.space[4]};
 margin-top: ${(props)=> props.theme.space[2]};
-background-color: #ddd;
+background-color: rgba(255, 255, 255, 0.7)
 `
 export const LoginContainer = styled.View`
 position: absolute;
-padding-vertical: ${(props)=> props.theme.space[4]};
-padding-horizontal: ${(props)=> props.theme.space[5]};
+padding: ${(props)=> props.theme.space[4]};
 margin-top: ${(props)=> props.theme.space[2]};
-background-color: #ddd;
+background-color: rgba(255, 255, 255, 0.7)
 `
