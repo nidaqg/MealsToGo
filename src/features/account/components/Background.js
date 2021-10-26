@@ -37,3 +37,10 @@ padding: ${(props)=> props.theme.space[4]};
 margin-top: ${(props)=> props.theme.space[2]};
 background-color: rgba(255, 255, 255, 0.7)
 `
+export const ErrorContainer = styled.View`
+  max-width: 300px;
+  align-items: center;
+  align-self: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+`;

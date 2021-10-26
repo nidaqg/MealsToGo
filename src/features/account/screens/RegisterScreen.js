@@ -1,5 +1,5 @@
 import React, {useState, useContext} from "react";
-import { Background, LoginContainer } from "../components/Background";
+import { Background, ErrorContainer, LoginContainer } from "../components/Background";
 import { colors } from "../../../Infrastructure/Theme/colors";
 import { Button, TextInput } from "react-native-paper";
 import { View, Text } from "react-native";
@@ -51,9 +51,9 @@ const {onRegister, error} = useContext(AuthContext)
         
         
         {error !=="" && (
-        <View style={{marginTop:15}}>
-       <Text>{error}</Text>
-        </View>)}
+        <ErrorContainer>
+       <Text style={{color:'red'}}>{error}</Text>
+        </ErrorContainer>)}
 
         <View style={{ marginTop: 15 }}>
           <Button

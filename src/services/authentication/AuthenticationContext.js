@@ -20,7 +20,6 @@ try{
        const currentUser = await firebase.auth().signInWithEmailAndPassword(email,password)
         .then((currentUser)=> {
         setIsAuthenticated(true)
-
         setUser(currentUser.user.email)
             setIsLoading(false)
         })
@@ -33,7 +32,6 @@ try{
 }
 catch(e) {
     setError(e.message)
-    console.log("ERROR CONTEXT", e.message)
     setIsLoading(false)
 }
 }
