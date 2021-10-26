@@ -1,14 +1,29 @@
-import React, {useState, createContext} from "react";
+import React, {useState, createContext, useEffect} from "react";
 import * as firebase from "firebase";
 
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({children}) => {
 //states for all the values
-const[user, setUser] = useState("")
+const[user, setUser] = useState(null)
 const[isLoading, setIsLoading] = useState(false)
 const[error, setError] = useState("")
 const[isAuthenticated, setIsAuthenticated] = useState(false)
+
+
+//function to check if there is already a user logged in or not
+//firebase has a hook for this so session can persist when reloaded
+useEffect(() => {
+    const checkUser = () => firebase.auth().onAuthStateChange((usr) => {
+    if(usr) {
+        setUser(usr);
+        setIsLoading(false)
+    } else {
+        setIsLoading(false)
+    }
+})
+},[]);
+
 
 //login function with auth
 const onLogin = async (email,password) => {
@@ -59,6 +74,13 @@ catch(e) {
 
 }
 
+//logout function
+const onLogOut = () => {
+    setUser(null);
+    firebase.auth().signOut();
+    setIsAuthenticated(false)
+}
+
 
 
     return (
@@ -70,6 +92,7 @@ catch(e) {
             error,
             onLogin,
             onRegister,
+            onLogOut,
         }}>
             {children}
         </AuthContext.Provider>
