@@ -41,11 +41,12 @@ const onRegister = async (email, password, repeatedpassword) => {
 try{
     if(password === repeatedpassword) {
         setError("")
+        setIsLoading(true)
     const currentUser = await firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((currentUser) => {
         setUser(currentUser.user.email)
-        setIsAuthenticated(true)
         setIsLoading(false)
+        setIsAuthenticated(true)
     })
 } else {
     setError("Error: Passwords do not match");
@@ -53,7 +54,6 @@ try{
 }}
 catch(e) {
     setIsLoading(false);
-    console.log(e.message)
     setError(e.message)
 }
 
