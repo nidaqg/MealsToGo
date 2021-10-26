@@ -35,7 +35,7 @@ try{
        const currentUser = await firebase.auth().signInWithEmailAndPassword(email,password)
         .then((currentUser)=> {
         setIsAuthenticated(true)
-        setUser(currentUser.user.email)
+        setUser(currentUser.user)
             setIsLoading(false)
         })
         
@@ -59,7 +59,7 @@ try{
         setIsLoading(true)
     const currentUser = await firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((currentUser) => {
-        setUser(currentUser.user.email)
+        setUser(currentUser.user)
         setIsLoading(false)
         setIsAuthenticated(true)
     })

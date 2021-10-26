@@ -10,6 +10,11 @@ import {SafeArea} from "../../features/restaurants/components/SafeArea";
 import { MapScreen } from '../../features/map/screens/MapScreen';
 import { AuthContext } from '../../services/authentication/AuthenticationContext';
 
+import { RestaurantContextProvider } from "../../services/restaurantservice/mock/RestaurantContext";
+import { LocationContextProvider } from "../../services/location/locationContext";
+import { FavouritesContextProvider } from "../../services/favourites/FavouritesContext";
+
+
 const Tab = createBottomTabNavigator();
 //for tab navigation
 const Settings = () => {
@@ -29,6 +34,10 @@ const Settings = () => {
 
 export const AppNavigation = () => {
     return (
+      <FavouritesContextProvider>
+      <LocationContextProvider>
+        <RestaurantContextProvider>
+
           <Tab.Navigator
           screenOptions={({ route }) => ({
             tabBarIcon: ({ color, size }) => {
@@ -52,5 +61,9 @@ export const AppNavigation = () => {
             <Tab.Screen name="Settings" component={Settings} />
             <Tab.Screen name="Map" component={MapScreen} />
           </Tab.Navigator>
+          </RestaurantContextProvider>
+          </LocationContextProvider>
+        </FavouritesContextProvider>
+
     )
 }

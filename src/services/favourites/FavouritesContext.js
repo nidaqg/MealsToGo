@@ -1,19 +1,24 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 //use async storage to perpetuate favourites even on reload
 //async stores locally on the phone, no server needed
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+//import authentication so we can attacj favourites to different users
+import { AuthContext } from "../authentication/AuthenticationContext";
+
 export const FavouritesContext = createContext();
 
 export const FavouritesContextProvider = ({ children }) => {
+  //get current user from auth context
+  const {user} = useContext(AuthContext)
   //state for storing favourites
   const [favourites, setFavourites] = useState([]);
 
   //function to store favourites in async
-  const saveFavourites = async (value) => {
+  const saveFavourites = async (value, user) => {
     try {
       const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem("@favourites", jsonValue);
+      await AsyncStorage.setItem(`@favourites-${user.uid}`, jsonValue);
     } catch (e) {
       console.log("error saving: ", e);
     }
@@ -21,9 +26,9 @@ export const FavouritesContextProvider = ({ children }) => {
 
   //function to retrieve async data
 
-  const loadFavourites = async () => {
+  const loadFavourites = async (user) => {
     try {
-      const value = await AsyncStorage.getItem("@favourites");
+      const value = await AsyncStorage.getItem(`@favourites-${user.uid}`);
       if (value !== null) {
         setFavourites(JSON.parse(value));
       }
@@ -48,14 +53,18 @@ export const FavouritesContextProvider = ({ children }) => {
 
 //useEffect to load favourites from storage
   useEffect(() => {
-    loadFavourites();
-  }, []);
+    if(user) {
+    loadFavourites(user);
+    }
+  }, [user]);
 
 
   //useEffect to save favourites to storage
   useEffect(() => {
-    saveFavourites(favourites);
-  }, [favourites]);
+    if(user){
+    saveFavourites(favourites, user);
+    }
+  }, [favourites, user]);
 
   
 

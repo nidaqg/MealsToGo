@@ -17,9 +17,6 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 
 //import contextproviders
-import { RestaurantContextProvider } from "./src/services/restaurantservice/mock/RestaurantContext";
-import { LocationContextProvider } from "./src/services/location/locationContext";
-import { FavouritesContextProvider } from "./src/services/favourites/FavouritesContext";
 import { AuthContextProvider } from "./src/services/authentication/AuthenticationContext";
 
 //import Navigation
@@ -60,13 +57,7 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <AuthContextProvider>
-        <FavouritesContextProvider>
-          <LocationContextProvider>
-            <RestaurantContextProvider>
               <Navigation />
-            </RestaurantContextProvider>
-          </LocationContextProvider>
-        </FavouritesContextProvider>
         </AuthContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
