@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../../services/authentication/AuthenticationContext";
 import { SafeArea } from "../../restaurants/components/SafeArea";
 import { Avatar, List } from "react-native-paper";
-import { Text, View } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 export const SettingsScreen = ({ navigation }) => {
   const { onLogOut, user } = useContext(AuthContext);
 
@@ -10,7 +10,15 @@ export const SettingsScreen = ({ navigation }) => {
     <SafeArea>
 
         <View style={{alignItems:'center', paddingTop:16}}>
-      <Avatar.Icon size={180} icon="human" backgroundColor="#2182BD" />
+     <TouchableOpacity
+    onPress={()=> navigation.navigate("Camera")}
+     >
+      <Avatar.Icon 
+      size={180} 
+      icon="human" 
+      backgroundColor="#2182BD" 
+      />
+      </TouchableOpacity>
       <Text style={{paddingTop:16}}>{user.email}</Text>
       </View>
 
