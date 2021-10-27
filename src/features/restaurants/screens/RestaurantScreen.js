@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import styled from "styled-components/native";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import {
   View,
@@ -13,6 +12,7 @@ import { FavouritesContext } from "../../../services/favourites/FavouritesContex
 import { ActivityIndicator, Colors } from "react-native-paper";
 import { Search } from "../components/SearchComponent";
 import { SafeArea } from "../components/SafeArea";
+import { FadeInView } from "../../../components/animations/FadeAnimation";
 
 export const RestaurantScreen = ({ navigation }) => {
   //set up contexts
@@ -54,7 +54,9 @@ export const RestaurantScreen = ({ navigation }) => {
                   });
                 }}
               >
+                <FadeInView>
                 <RestaurantInfo restaurant={item} />
+                </FadeInView>
               </TouchableOpacity>
             );
           }}
