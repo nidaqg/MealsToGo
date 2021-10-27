@@ -13,17 +13,16 @@ const[isAuthenticated, setIsAuthenticated] = useState(false)
 
 //function to check if there is already a user logged in or not
 //firebase has a hook for this so session can persist when reloaded
-useEffect(() => {
-    const checkUser = () => firebase.auth().onAuthStateChange((usr) => {
-    if(usr) {
-        setUser(usr);
+firebase.auth().onAuthStateChanged((u) => {
+    if(u) {
+        setUser(u);
+        setIsAuthenticated(true)
         setIsLoading(false)
     } else {
         setIsLoading(false)
     }
-    checkUser()
 })
-},[]);
+
 
 
 //login function with auth

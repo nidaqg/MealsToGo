@@ -24,7 +24,7 @@ export const SettingsScreen = ({ navigation }) => {
 
         <List.Item
           style={{ padding: 16 }}
-          title="Log out"
+          title="Logout"
           left={(props) => <List.Icon {...props} color="black" icon="door" />}
           onPress={() => onLogOut()}
         />
