@@ -28,7 +28,7 @@ export const SettingsScreen = ({ navigation }) => {
       <View style={{ alignItems: "center", paddingTop: 16 }}>
         <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
           {!photo && (
-            <Avatar.Icon size={180} icon="human" backgroundColor="#2182BD" />
+            <Avatar.Icon size={180} icon="camera" backgroundColor="#2182BD" />
           )}
           {photo && (
             <Avatar.Image
@@ -52,7 +52,7 @@ export const SettingsScreen = ({ navigation }) => {
         <List.Item
           style={{ padding: 16 }}
           title="Logout"
-          left={(props) => <List.Icon {...props} color="black" icon="door" />}
+          left={(props) => <List.Icon {...props} color="black" icon="logout" />}
           onPress={() => onLogOut()}
         />
       </List.Section>

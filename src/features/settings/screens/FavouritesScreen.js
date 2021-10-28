@@ -21,10 +21,9 @@ export const FavouritesScreen = ({ navigation }) => {
     favourites.length ? (
         <>
       <SafeArea>
-          <View style={{paddingTop:15, alignItems:'left', paddingLeft:15}}>
+          <View style={{padding:10, alignItems:'left', paddingLeft:15}}>
               <Button
               icon="arrow-left" 
-              mode="contained" 
               color={colors.brand.primary}
               onPress={() => navigation.goBack()}
               >Back
